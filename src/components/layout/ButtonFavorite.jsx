@@ -6,11 +6,14 @@ import { favoritesMusics } from '../../store/actions/actionMusics'
 
 
 const ButtonFavorite = props => {
+    
     async function clickFavorite(music){
+        //Verifica se a música já foi adicionada aos favoritos e não há retorna se já tenha sido
         if(props.favorites.some(e => e.id === music.id)) return
         await props.fvMusics(props.favorites.concat(music))
     }
 
+    //Retorna um novo array de músicas sem o item removido
     async function  removeFavorite(music){
         let favorites = props.favorites
         favorites = favorites.filter((item) =>{

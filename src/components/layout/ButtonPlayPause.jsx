@@ -6,25 +6,36 @@ import { idMusicPlay, urlMusicPlay } from '../../store/actions/actionMusics'
 import { PlayPause, IconPause } from './ButtonPlayPause.js'
 
 const AudioPlayer = props => {
-    async function clickPlay(url,id){    
+
+    //Função do botão de play e pause das músicas
+    async function clickPlay(url,id){   
+        //Passar a url da música escolhida 
         await props.urlMusic(url)
         const aud = document.getElementById('player-audio')
         const btnPlay =  document.getElementById('play'+id)
+        /*Verifica se já existe uma música sendo tocada e se ela é diferente
+        da anterior, para assim pausar a anterior para começar uma nova
+        */
         if(props.idMusicPlay && props.idMusicPlay !== id){
             document.getElementById('play'+props.idMusicPlay).style.display = 'block'
             document.getElementById('pause'+props.idMusicPlay).style.display = 'none'
             aud.pause()
         }
+        /*Verifica se é o botão play que esta sendo mostrado para começar 
+        a música e muda o icone exibido para pause*/
         if(btnPlay.style.display === 'block' || btnPlay.style.display === ''){
             await aud.play()
             btnPlay.style.display = 'none'
             document.getElementById('pause'+id).style.display = 'block'
-        }else{
+        }
+        //Caso o icone exibido não seja o play, ele pausa a música e muda o icone para play
+        else{
             btnPlay.style.display = 'block'
             document.getElementById('pause'+id).style.display = 'none'
             aud.pause()
         }
-            
+
+        //Evento para pausar e verificar se a música terminou para mudar o icone do botão para pause
         aud.addEventListener('ended', (e) => {
             e.target.pause()
             document.getElementById('play'+id).style.display = 'block'

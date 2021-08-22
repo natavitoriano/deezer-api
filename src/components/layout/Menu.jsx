@@ -10,6 +10,7 @@ class Menu extends Component {
         selected: ''
     }
     async selectMenu(e){
+        //Verifica se o menu selecionado foi o inicio e se ele já não está como selecionado
         if(e === 'Início' && this.state.selected !== 'home'){
             this.setState({selected:'home'})
             await this.props.moMusic('')
@@ -19,6 +20,7 @@ class Menu extends Component {
         }
     }
     componentDidMount(){
+        //Verifica qual página está na url
         const splitHref = window.location.href.split('/')
         if(splitHref[3] === 'favorite'){
             this.setState({selected:'favorite'})
