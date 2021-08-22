@@ -10,10 +10,10 @@ class Menu extends Component {
         selected: ''
     }
     async selectMenu(e){
-        if(e === 'Início'){
+        if(e === 'Início' && this.state.selected !== 'home'){
             this.setState({selected:'home'})
             await this.props.moMusic('')
-        }else{
+        }else if(e === 'Favoritas' && this.state.selected !== 'favorite'){
             this.setState({selected:'favorite'})
             await this.props.moMusic('favorite')
         }
