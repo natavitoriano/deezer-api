@@ -1,0 +1,6 @@
+export const UPDATE_TOP_MUSICS = 'UPDATE_TOP_MUSICS'
+export const FAVORITES_MUSICS = 'FAVORITES_MUSICS'
+export const ID_MUSIC_PLAY = 'ID_MUSIC_PLAY'
+export const LIST_MODE = 'LIST_MODE'
+export const INPUT_SEARCH = 'INPUT_SEARCH'
+export const URL_MUSIC_PLAY = 'URL_MUSIC_PLAY'
